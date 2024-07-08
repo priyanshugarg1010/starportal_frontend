@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MoveRight } from "lucide-react";
 import intractAcademyBackground from "../assets/intract-academy-background.png";
 import gif from "../assets/academy-animated-logo.gif";
@@ -10,15 +10,18 @@ import TopCreator from "../components/TopCreator";
 import Journey from "../components/Journey";
 
 const Home = () => {
+  const [tab, setTab] = useState("essentials");
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleButtonClick = (tabName) => {
     const queryParams = new URLSearchParams(location.search);
     queryParams.set("tab", tabName);
+    setTab(tabName);
     navigate({
       search: `?${queryParams.toString()}`,
     });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const Home = () => {
       });
     }
   }, [location.search, navigate]);
+
   return (
     <div className="border-b border-stone-800 bg-neutral-950">
       <div className="relative h-[calc(100vh-64px)] overflow-hidden">
@@ -55,7 +59,7 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <Journey />
+      {tab === "essentials" && <Journey />}
       <TopCreator />
       <div className="flex flex-col h-full justify-center items-center pt-20">
         <div className="flex flex-col justify-center items-center w-full h-full gap-2 ">

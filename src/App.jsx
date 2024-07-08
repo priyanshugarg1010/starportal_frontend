@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 import MaxWidthWrapper from "./components/MaxWidthWrapper";
 
 const App = () => {
@@ -26,6 +27,11 @@ const App = () => {
           path: "/",
           element: <Home />,
         },
+        {
+          path: "/academy",
+          element: <Home />,
+        },
+        { path: "*", element: <NotFound /> },
       ],
     },
   ]);
