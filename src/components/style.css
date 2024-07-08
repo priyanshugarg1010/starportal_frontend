@@ -1,0 +1,8 @@
+.play-button {
+    opacity: 0;
+  }
+  
+  .group:hover .play-button {
+    opacity: 1;
+  }
+  
